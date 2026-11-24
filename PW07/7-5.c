@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+int sum_recursive(int n);
+int sum_iterative(int n);
+
+int main(void) {
+    int n;
+    int rec_result;
+    int iter_result;
+
+    printf("Введите N (целое положительное число): ");
+
+    if (scanf("%d", &n) != 1)
+    {
+        printf("Ошибка: введено не целое число.\n");
+        return 1;
+    }
+
+    if (n < 1)
+    {
+        printf("N должно быть больше 0.\n");
+        return 1;
+    }
+
+    rec_result = sum_recursive(n);
+    iter_result = sum_iterative(n);
+
+    printf("Рекурсивно: сумма от 1 до %d = %d\n", n, rec_result);
+    printf("Итеративно: сумма от 1 до %d = %d\n", n, iter_result);
+
+    return 0;
+}
+
+int sum_recursive(int n)
+{
+    if (n == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return n + sum_recursive(n - 1);
+    }
+}
+
+int sum_iterative(int n)
+{
+    int i;
+    int sum = 0;
+
+    for (i = 1; i <= n; i++)
+    {
+        sum = sum + i;
+    }
+
+    return sum;
+}
